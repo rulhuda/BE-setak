@@ -1,0 +1,50 @@
+### GET ALL USER
+GET http://localhost:5000/api/users
+
+### GET USER
+GET http://localhost:5000/api/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJ1c2VyNyIsImlhdCI6MTY2OTc5MTAxNiwiZXhwIjoxNjY5NzkxMDMxfQ.kNg62NJPfurAG2PCBS4ZMUeWwKQyKUt9qKIbDfezzI4
+
+### REGISTER
+POST http://localhost:5000/api/register
+Content-Type: application/json
+
+{
+  "username": "user8",
+  "password": "1234"
+}
+
+### LOGIN
+POST http://localhost:5000/api/login
+Content-Type: application/json
+
+{
+  "username": "user7",
+  "password": "1234"
+}
+
+### Check user
+GET http://localhost:5000/api/check-user
+Content-Type: application/json
+
+{
+  "username": "user7"
+}
+
+### Update Score
+PATCH http://localhost:5000/api/add-score/1
+Content-Type: application/json
+
+{
+  "score": 30
+}
+
+### Tokens
+GET http://localhost:5000/api/tokens
+
+### Logout
+DELETE http://localhost:5000/api/logout
+
+### Get Quiz
+GET http://localhost:5000/api/quiz
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJ1c2VyNyIsImlhdCI6MTY2OTQ2NjYwMCwiZXhwIjoxNjY5NDY2NjIwfQ.S2eUdcKPaR2_XMBQwVMGdPOfu9TsNoiaiEUBhWvszS8
