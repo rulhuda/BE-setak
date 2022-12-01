@@ -35,6 +35,10 @@ export const Login = async (req, res, next) => {
       }
     })
 
+    if (!user) {
+      return res.send({ error: true, msg: "User tidak ditemukan!" });
+    }
+
     const match = await bcrypt.compare(password, user.password);
 
     if (!match) {
@@ -59,13 +63,11 @@ export const Login = async (req, res, next) => {
       }
     });
 
-    res.cookie('refreshToken', refreshToken, {
+    return res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000,
       secure: true
-    });
-
-    res.send({ error: false, accessToken })
+    }).send({ error: false, accessToken })
   } catch (error) {
     return res.status(404).send({ error: true, msg: "User tidak ditemukan!" })
   }
