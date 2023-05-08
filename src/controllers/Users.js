@@ -17,7 +17,7 @@ export const Register = async (req, res, next) => {
     })
 
     if (user) {
-      return res.send({ error: false, data: user })
+      return res.status(200).send({ error: false, data: user })
     }
   } catch (error) {
     return res.send({ error: true, data: [] })
@@ -36,13 +36,13 @@ export const Login = async (req, res, next) => {
     })
 
     if (!user) {
-      return res.send({ error: true, msg: "User tidak ditemukan!" });
+      return res.status(404).send({ error: true, msg: "User tidak ditemukan!" });
     }
 
     const match = await bcrypt.compare(password, user.password);
 
     if (!match) {
-      return res.send({ error: true, msg: "Password salah!" })
+      return res.status(403).send({ error: true, msg: "Password salah!" })
     }
 
     const { id, username: uname } = user;
@@ -101,7 +101,7 @@ export const Logout = async (req, res, next) => {
 export const InsertScore = async (req, res, next) => {
   try {
     const { id } = req.params;
-    console.log(id);
+
     const { score } = req.body;
     const checkScore = await prisma.user.findUnique({
       where: {
@@ -129,9 +129,9 @@ export const InsertScore = async (req, res, next) => {
     });
 
     if (!response) {
-      return res.send({ error: true, data: [] })
+      return res.status(404).send({ error: true, data: [] })
     }
-    return res.send({ error: false, data: response })
+    return res.status(200).send({ error: false, data: response })
   } catch (error) {
     return res.send({ error: true, msg: error.message })
   }

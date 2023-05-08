@@ -14,7 +14,7 @@ router.get('/tokens', generateRefreshToken);
 
 router.get('/me', verifyToken, Profile);
 
-router.patch('/add-score/:id', InsertScore);
+router.patch('/add-score/:id', verifyToken, InsertScore);
 
 router.delete('/logout', Logout);
 

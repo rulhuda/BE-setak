@@ -4,6 +4,6 @@ import { verifyToken } from "../middleware/VerifyToken.js";
 
 const router = Router();
 
-router.get('/quiz', Quiz);
+router.get('/quiz', verifyToken, Quiz);
 
 export default router;

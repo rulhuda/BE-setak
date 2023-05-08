@@ -1,3 +1,12 @@
+### 
+POST https://be-setak-production.up.railway.app/api/login
+Content-Type: application/json
+
+{
+  "username": "ngawur",
+  "password": "wkwkw"
+}
+
 ### GET ALL USER
 GET http://localhost:5000/api/users
 
@@ -19,16 +28,8 @@ POST http://localhost:5000/api/login
 Content-Type: application/json
 
 {
-  "username": "user7",
+  "username": "user",
   "password": "1234"
-}
-
-### Check user
-GET http://localhost:5000/api/check-user
-Content-Type: application/json
-
-{
-  "username": "user7"
 }
 
 ### Update Score
